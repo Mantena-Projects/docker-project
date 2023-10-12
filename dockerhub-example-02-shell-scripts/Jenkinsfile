@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh ''
+        sh 'docker push padma/pa-alpine:latest'
       }
     }
   }
