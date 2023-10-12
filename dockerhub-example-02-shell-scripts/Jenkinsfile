@@ -11,18 +11,18 @@ pipeline {
     }
     stage('Login') {
       steps {
-        sh ''
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
     stage('Push') {
       steps {
-        sh './jenkins/push.sh'
+        sh ''
       }
     }
   }
   post {
     always {
-      sh './jenkins/logout.sh'
+      sh ''
     }
   }
 }
