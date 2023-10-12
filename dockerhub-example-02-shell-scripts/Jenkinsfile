@@ -1,10 +1,24 @@
 pipeline {
   agent any
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials('darinpope-dockerhub')
+  }
   stages {
-    stage('Build') {
+    stage('Login') {
       steps {
-        sh 'docker build -t dhub2000/padma-alpine:latest .'
+        sh ''
       }
     }
+    stage('Push') {
+      steps {
+        sh ''
+      }
+    }
+  }
+  post {
+    always {
+      sh 'docker logout'
+    }
+  }
 }
 }
